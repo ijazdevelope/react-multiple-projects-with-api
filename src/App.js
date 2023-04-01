@@ -2,7 +2,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="">
+    <div className="container">
       app.js
     </div>
   );
