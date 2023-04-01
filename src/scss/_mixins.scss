@@ -1,0 +1,68 @@
+@mixin btn {
+    align-items: center;
+    border: none;
+    background-color: $primary;
+    border-radius: 24px;
+    color: $white;
+    display: flex;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: $sofia-fonts;
+    justify-content: center;
+    letter-spacing: 1.2px;
+    line-height: 1.13;
+    padding: 12px 32px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all $speed-500;
+
+    &:hover {
+        color: $black;
+        background-color: $primary1;
+        text-decoration: none;
+    }
+
+    &:not(:disabled) {
+        &:not(.disabled) {
+            &:active {
+                color: $primary;
+                background-color: transparent;
+            }
+        }
+    }
+
+    &:not(:disabled) {
+        &:not(.disabled) {
+            &:active {
+                &:focus {
+                    color: $primary;
+                    box-shadow: unset;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@mixin icon-mixin {
+    // content: $envelope;
+    cursor: pointer;
+    font-family: $icon-family;
+    left: 0;
+    position: relative;
+    padding-right: rem(3px);
+    transform: translateX(-3px);
+}
+
+@mixin todo-title($color: $white) {
+    color: $color;
+    font-family: $sofia-fonts;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    padding: rem(10px) 0;
+}

@@ -1,0 +1,36 @@
+.c-wrapper, .c-todo {
+    .btn {
+        @include btn();
+
+        &--success {
+            background: $vital-green;
+            color: $white;
+
+            &:hover {
+                background-color: $white;
+                color: $vital-green;
+                transform: scale($scale1-1);
+                transition: all $speed-500 ease-in-out;
+            }
+        }
+
+        &--secondary {
+            background-color: $secondary-btn-bg;
+
+            &:hover {
+                background-color: $white;
+                color: $secondary-btn-bg;
+                transform: scale($scale1-1);
+                transition: all $speed-500 ease-in-out;
+            }
+        }
+
+        &--primary {
+            &:hover {
+                transform: scale($scale1-1);
+                transition: all $speed-500 ease-in-out;
+            }
+        }
+    }
+
+}
