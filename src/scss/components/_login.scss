@@ -1,0 +1,184 @@
+@import '../variables';
+@import '../functions/rem';
+@import '../../../node_modules/bootstrap/scss/bootstrap-utilities';
+@import '../mixins';
+
+$ns: c-wrapper;
+
+.#{$ns} {
+    // margin-top: 1.5rem;
+    min-height: 500px;
+    padding: .5rem;
+    // padding: 40px 30px 30px 30px;
+    // background-color: $bright-gray;
+    // border-radius: 15px;
+    // box-shadow: $button-shadow;
+
+    &__columns {
+        background-color: $white;
+        border-radius: $rounded-1rem $rounded-1rem $rounded-1rem 0;
+        box-shadow: $button-shadow;
+        // padding-top: 1.4rem;
+    }
+
+    &__img {
+        border-radius: $rounded-1rem 0 0 $rounded-1rem;
+        max-height: 553px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__name {
+        color: $black;
+        letter-spacing: 1.3px;
+        font-family: $sofia-fonts;
+        font-weight: normal;
+        font-size: 1.4rem;
+        padding-left: 10px;
+        margin-top: 1.4rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        &__title,
+        &__text {
+            text-transform: capitalize;
+        }
+
+        &__text {
+            font-size: $rounded-1rem;
+            font-family: sans-serif;
+        }
+    }
+
+    &__logo {
+        width: 80px;
+        margin: auto;
+
+        &__img {
+            width: 100%;
+            height: rem(80px);
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0px 0px 3px $scorpion,
+                0px 0px 0px 5px $bright-gray,
+                8px 8px 15px $edward,
+                -8px -8px 15px $white;
+        }
+    }
+
+    &__form {
+        padding: $rounded-1rem;
+        margin-top: $rounded-1rem;
+
+        &__field {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            border-radius: 20px;
+            box-shadow: inset 8px 8px 8px $iron, inset -8px -8px 8px $white;
+            position: relative;
+
+            &__user {
+                padding-right: rem(10px);
+                width: rem(20px);
+                height: rem(20px);
+                padding-top: rem(3px);
+            }
+
+            &__input {
+                width: 100%;
+                display: block;
+                border: none;
+                border-radius: 20px;
+                outline: none;
+                background: none;
+                font-size: 1.2rem;
+                color: $dove-gray;
+                padding: 10px 15px 10px 10px;
+            }
+
+            &__error {
+                cursor: pointer;
+                color: $red;
+                position: absolute;
+                right: 13px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 2;
+            }
+        }
+
+        &__button {
+            box-shadow: none;
+            width: 100%;
+            height: 40px;
+            background-color: $primary;
+            color: $white;
+            border-radius: 25px;
+            box-shadow: 3px 3px 3px $silver-chalice,
+                -3px -3px 3px $white;
+            letter-spacing: 1.3px;
+            margin-top: $rounded-1rem;
+
+            &:hover {
+                background-color: $cerulean;
+            }
+        }
+
+        &__error {
+            color: $red;
+            padding-left: rem(16px);
+        }
+
+        &__account {
+            margin-top: $rounded-1rem;
+            text-align: right;
+
+            &__link {
+                font-weight: 500;
+                text-decoration: none;
+                color: $mine-shaft;
+            }
+        }
+    }
+
+    &__forgot-password,
+    &__signup {
+        text-decoration: none;
+        font-size: $rounded-1rem;
+        color: $mine-shaft;
+        font-weight: 500;
+
+        &:hover {
+            color: $cerulean;
+        }
+    }
+
+    &__forgot-password {
+        text-decoration: underline;
+    }
+
+    &__or {
+        padding: 0 5px;
+    }
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: inset 8px 8px 8px $iron, inset -8px -8px 8px $white;
+}
+
+.fa-eye,
+.fa-eye-slash {
+    cursor: pointer;
+}
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}

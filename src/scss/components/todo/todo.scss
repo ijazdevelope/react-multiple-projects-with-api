@@ -1,0 +1,91 @@
+@import '../../../scss/variables';
+@import '../../functions/rem';
+
+$ns: c-todo;
+
+.#{$ns} {
+    background: url('../../../static/images/laptop.jpg') no-repeat center;
+    background-size: cover;
+    color: $white;
+    min-height: 100vh;
+
+    &__header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: rem(10px);
+        text-transform: capitalize;
+    }
+
+    &__icon {
+        margin: 0;
+    }
+
+    &__img {
+        width: rem(40px);
+    }
+
+    &__logout {
+        cursor: pointer;
+        color: $white;
+        font-weight: 500;
+        font-size: 1rem;
+        margin: 0;
+        text-decoration: none;
+    }
+
+    &__title {
+        @include todo-title($white);
+    }
+
+    &__not-found {
+        @include todo-title($white);
+    }
+
+    &__todo-img {
+        width: rem(35px);
+    }
+
+    &__form {
+        background-color: $bright-gray;
+        padding: rem(16px);
+    }
+
+    &__input-group {
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        box-shadow: inset 8px 8px 8px $iron, inset -8px -8px 8px $white;
+        position: relative;
+    }
+
+    .#{$ns} {
+        &__input {
+            display: block;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background: none;
+            font-size: 1.2rem;
+            color: $dove-gray;
+            padding: 10px 15px 10px 10px;
+            box-shadow: inset 8px 8px 8px $iron, inset -8px -8px 8px $white;
+
+            &--error-border {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+        }
+    }
+
+    &__name {
+        color: $black;
+        font-family: $sequal-font-900;
+        text-transform: capitalize;
+    }
+
+    .fa {
+        cursor: pointer;
+    }
+
+}

@@ -1,10 +1,21 @@
+import { Routes, Route } from 'react-router';
 import './App.css';
+import Navbar from './components/Navbar';
+import Login from './pages/auth/login/Login';
+import Signup from './pages/auth/signup/Signup';
 
 const App = () => {
   return (
-    <div className="container">
-      app.js
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/todo" element={<Todo />} /> */}
+      </Routes>
+    </>
   );
 }
 

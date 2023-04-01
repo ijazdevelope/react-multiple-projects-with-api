@@ -1,0 +1,46 @@
+// Monserat Font
+@font-face {
+    font-family: 'Sequel100Wide-45';
+    src: url('../static/fonts/Sequel100Black-45.woff2') format('woff2'),
+        url('../static/fonts/Sequel100Black-45.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sequel100Wide-65';
+    src: url('../static/fonts/Sequel100Wide-65.woff2') format('woff2'),
+        url('../static/fonts/Sequel100Wide-65.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Monserat Font
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../static/fonts/Montserrat-Italic.woff2') format('woff2'),
+        url('../static/fonts/Montserrat-Italic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Sofia Font
+@font-face {
+    font-family: 'SofiaPro';
+    src: url('../static/fonts/SofiaProBlack.woff2') format('woff2'),
+        url('../static/fonts/SofiaProBlack.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SofiaProBold';
+    src: url('../static/fonts/SofiaProBlack.woff2') format('woff2'),
+        url('../static/fonts/SofiaProBlack.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+

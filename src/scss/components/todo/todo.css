@@ -1,0 +1,64 @@
+.c-todo {
+  background: url("../../../static/images/laptop.jpg") no-repeat center;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+}
+.c-todo__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.625rem;
+  text-transform: capitalize;
+}
+.c-todo__icon {
+  margin: 0;
+}
+.c-todo__img {
+  width: 2.5rem;
+}
+.c-todo__logout {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
+  text-decoration: none;
+}
+.c-todo__todo-img {
+  width: 2.1875rem;
+}
+.c-todo__form {
+  background-color: #ecf0f3;
+  padding: 1rem;
+}
+.c-todo__input-group {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+  position: relative;
+}
+.c-todo .c-todo__input {
+  display: block;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 10px 15px 10px 10px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+.c-todo .c-todo__input--error-border {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.c-todo__name {
+  color: #000;
+  font-family: "Sequel100Wide-45", sans-serif;
+  text-transform: capitalize;
+}
+.c-todo .fa {
+  cursor: pointer;
+}/*# sourceMappingURL=todo.css.map */
