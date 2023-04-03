@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../scss/components/todo/todo.css';
 import TodoImg from '../../static/images/to-do-list.png';
@@ -7,32 +7,20 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../Input';
 import { TodoSchema } from '../../pages/auth/schema-validation/SchemaValidation';
-// import { Axios } from '../../config/Interceptor';
-// import { useDispatch, useSelector } from 'react-redux'
-// import { Action, addTodo } from '../../redux/actions/Actions';
-// import { actionTypes } from '../../redux/constants/Constants';
+import { Axios } from '../../config/Interceptor';
+import { useDispatch, useSelector } from 'react-redux'
+import { Action, addTodo } from '../../redux/actions/Actions';
+import { actionTypes } from '../../redux/constants/Constants';
 import TodoNotFoundImg from '../../assets/images/error-404-not-found.png';
 
 
 
 const Todo = () => {
 
-  // const state = useSelector(state => state?.reducer?.list);
-  // const dispatch = useDispatch();
+  const { list } = useSelector(state => state?.reducer);
+  const dispatch = useDispatch();
 
-  // console.log(state, 'redux state onload');
-
-  // const fetchData = () => {
-  //   const response = Axios.get('https://jsonplaceholder.typicode.com/users')
-  //     .then(response => console.log('response', response.data))
-  //     .catch(err => console.log(err));
-  //   dispatch(Action(response?.data));
-  //   console.log('response in Todo Comp', response);
-  // }
-
-  // const { list } = useSelector(state => state?.reducer);
-
-  // console.log(list, 'redux state');
+  console.log(list, 'redux state onload');
 
   // const fetchData = () => {
   //   Axios.get('https://jsonplaceholder.typicode.com/users')
@@ -42,17 +30,27 @@ const Todo = () => {
   //   // console.log('response in Todo Comp', response.data);
   // }
 
-  // useEffect(() => {
-  //   // fetchData();
-  // }, []);
-
   const { handleSubmit, register, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(TodoSchema),
   });
 
-  // const onSubmit = (data) => {
-  //   dispatch(addTodo({ todo_name: data?.todo_name }));
-  // };
+  const onSubmit = (data) => {
+    // const stateValue = { ...data, list: [...list, data] };
+    // const tempArr = [...list, { ...data }]
+    // if (array !== "") {
+    // array.push(data);
+    // array = [...array, data];
+    // setArry(data);
+    // }
+    // or using spread operator
+    // array = [...array, data];
+    // const newValu = { ...data, array: [...array, data] }
+    // setArry(newValu);
+    // array.push(newValu);
+    // console.log(stateValue.list, 'in submit fun')
+
+    dispatch(addTodo(data));
+  };
 
   return (
     <div className="c-todo">
@@ -72,8 +70,7 @@ const Todo = () => {
           <div className="row">
             <div className="col-12 col-md-7 m-auto c-todo__add">
               <h2 className='c-todo__title'>todo title </h2>
-              {/* <form className='c-todo__form' onSubmit={handleSubmit(onSubmit)}> */}
-              <form className='c-todo__form'>
+              <form className='c-todo__form' onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group mb-3 c-todo__input-group">
                   <span className="input-group-text" id="basic-addon1">
                     <img className='c-todo__todo-img' src={TodoImg} alt='todo-img' />
@@ -112,10 +109,10 @@ const Todo = () => {
                 </div>
               </form>
 
-              {/* {list?.length > 0 ? (
-                list?.map(data => (
-                  <div className="col-12 d-flex justify-content-between my-3 c-todo__form">
-                    <span className='c-todo__name'> {data?.name} </span>
+              {list?.length > 0 ? (
+                list?.map((data, index) => (
+                  <div key={index} className="col-12 d-flex justify-content-between my-3 c-todo__form">
+                    <span className='c-todo__name'> {data?.todo_name} </span>
                     <div className='d-flex align-items-center'>
                       <input type='checkbox' />
                       <span className='fa fa-pencil mx-3 text-success'></span>
@@ -128,7 +125,7 @@ const Todo = () => {
                   <h3 className='c-todo__not-found'>todo not found</h3>
                   <img src={TodoNotFoundImg} className='w-100' alt='todo-not-found' />
                 </div>
-              )} */}
+              )}
 
             </div>
           </div>
