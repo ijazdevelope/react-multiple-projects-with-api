@@ -1,27 +1,33 @@
-.c-wrapper, .c-todo {
+.c-wrapper,
+.c-todo {
     .btn {
         @include btn();
 
         &--success {
-            background: $vital-green;
-            color: $white;
+            @include btn-styling($white);
+
+            &::before {
+                @include btn-before($vital-green);
+            }
 
             &:hover {
-                background-color: $white;
-                color: $vital-green;
-                transform: scale($scale1-1);
-                transition: all $speed-500 ease-in-out;
+                &::before {
+                    transform: scaleX(0);
+                }
             }
         }
 
         &--secondary {
-            background-color: $secondary-btn-bg;
+            @include btn-styling($white);
 
             &:hover {
-                background-color: $white;
-                color: $secondary-btn-bg;
-                transform: scale($scale1-1);
-                transition: all $speed-500 ease-in-out;
+                &::before {
+                    transform: scaleX(0);
+                }
+            }
+
+            &::before {
+                @include btn-before($secondary-btn-bg);
             }
         }
 
