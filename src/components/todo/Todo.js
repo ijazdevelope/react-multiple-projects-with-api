@@ -9,11 +9,9 @@ import Input from '../Input';
 import { TodoSchema } from '../../pages/auth/schema-validation/SchemaValidation';
 import { Axios } from '../../config/Interceptor';
 import { useDispatch, useSelector } from 'react-redux'
-import { Action, addTodo } from '../../redux/actions/Actions';
+import { Action, addTodo, deleteTodo } from '../../redux/actions/Actions';
 import { actionTypes } from '../../redux/constants/Constants';
 import TodoNotFoundImg from '../../assets/images/error-404-not-found.png';
-
-
 
 const Todo = () => {
 
@@ -22,35 +20,20 @@ const Todo = () => {
 
   console.log(list, 'redux state onload');
 
-  // const fetchData = () => {
-  //   Axios.get('https://jsonplaceholder.typicode.com/users')
-  //     .then(response => dispatch(Action(response?.data)))
-  //     .catch(err => console.log(err));
-  //   // dispatch(Action(response?.data));
-  //   // console.log('response in Todo Comp', response.data);
-  // }
-
-  const { handleSubmit, register, setValue, formState: { errors } } = useForm({
+  const { handleSubmit, register, setValue, reset, formState: { errors } } = useForm({
     resolver: yupResolver(TodoSchema),
   });
 
   const onSubmit = (data) => {
-    // const stateValue = { ...data, list: [...list, data] };
-    // const tempArr = [...list, { ...data }]
-    // if (array !== "") {
-    // array.push(data);
-    // array = [...array, data];
-    // setArry(data);
-    // }
-    // or using spread operator
-    // array = [...array, data];
-    // const newValu = { ...data, array: [...array, data] }
-    // setArry(newValu);
-    // array.push(newValu);
-    // console.log(stateValue.list, 'in submit fun')
-
     dispatch(addTodo(data));
+    reset({ todo_name: '' });
   };
+
+  const deleteHandler = (index) => {
+    const delTodo = list?.filter((todo, ind) => ind !== index);
+    console.log(delTodo, 'deleted todo in Todo.js');
+    dispatch(deleteTodo(delTodo));
+  }
 
   return (
     <div className="c-todo">
@@ -116,7 +99,7 @@ const Todo = () => {
                     <div className='d-flex align-items-center'>
                       <input type='checkbox' />
                       <span className='fa fa-pencil mx-3 text-success'></span>
-                      <span className='fa fa-trash-o text-danger'></span>
+                      <span onClick={() => deleteHandler(index)} className='fa fa-trash-o text-danger'></span>
                     </div>
                   </div>
                 ))

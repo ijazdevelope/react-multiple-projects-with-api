@@ -5,14 +5,18 @@ const InitialState = {
 }
 
 export const Reducers = (state = InitialState, { payload, type }) => {
-    // const { type } = payload
-    console.log(payload, state.list, 'payload in reducer');
+    console.log(payload, type, 'payload in reducer');
 
     switch (type) {
         case INCREMENT: return { ...state, list: payload };
         case actionTypes.ADD_TODO: {
-            localStorage.setItem('todo', JSON.stringify([...state.list, { ...payload }]))
+            localStorage.setItem('todo', JSON.stringify([...state.list, { ...payload }]));
             return { ...state, list: [...state.list, { ...payload }] }
+        };
+        case actionTypes.DELETE_TODO: {
+            localStorage.setItem('todo', JSON.stringify([...payload]));
+            const getValue = JSON.parse(localStorage.getItem('todo'));
+            return { ...state, list: [...getValue] }
         };
         default: return state;
     }
