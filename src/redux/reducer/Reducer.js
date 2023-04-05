@@ -18,6 +18,13 @@ export const Reducers = (state = InitialState, { payload, type }) => {
             const getValue = JSON.parse(localStorage.getItem('todo'));
             return { ...state, list: [...getValue] }
         };
+
+        case actionTypes.EDIT_TODO: {
+            localStorage.setItem('todo', JSON.stringify([...payload]));
+            const getValue = JSON.parse(localStorage.getItem('todo'));
+            return { ...state, list: [...getValue] }
+        };
+
         default: return state;
     }
 }
