@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../scss/components/todo/todo.css';
 import TodoImg from '../../static/images/to-do-list.png';
@@ -9,15 +9,14 @@ import Input from '../Input';
 import { TodoSchema } from '../../pages/auth/schema-validation/SchemaValidation';
 import { Axios } from '../../config/Interceptor';
 import { useDispatch, useSelector } from 'react-redux'
-import { Action, addTodo, deleteTodo, updateTodo } from '../../redux/actions/Actions';
-import { actionTypes } from '../../redux/constants/Constants';
+import { addTodo, deleteTodo, updateTodo } from '../../redux/actions/Actions';
 import TodoNotFoundImg from '../../assets/images/error-404-not-found.png';
 
 const Todo = () => {
 
   const { list } = useSelector(state => state?.reducer);
   const dispatch = useDispatch();
-  const [updateTodoBtn, setUpdateTodoBtn] = useState(false);
+  const [todoIndex, setTodoIndex] = useState(null);
 
   console.log(list, 'redux state onload');
 
@@ -26,9 +25,13 @@ const Todo = () => {
   });
 
   const onSubmit = (data) => {
+    if (todoIndex === null) {
     dispatch(addTodo(data));
-    reset({ todo_name: '' });
-    console.log(data.todo_name, 'edit todo');
+  } else {
+      dispatch(updateTodo(data, todoIndex));
+      setTodoIndex(null);
+  }
+  reset({ todo_name: '' });
   };
 
   const deleteHandler = (index) => {
@@ -36,11 +39,9 @@ const Todo = () => {
     dispatch(deleteTodo(delTodo));
   }
 
-  const editTodo = (...rest) => {
-    dispatch(updateTodo(rest));
-    setUpdateTodoBtn(true);
-    // setValue('todo_name', value,);
-    console.log(rest)
+  const editTodo = (value, index) => {
+    setTodoIndex(index);
+    setValue('todo_name', value);
   }
 
   return (
@@ -78,8 +79,8 @@ const Todo = () => {
                   />
                 </div>
                 <p className='c-wrapper__form__error'>{errors.todo_name?.message}</p>
-                {updateTodoBtn ?
-                  <Button className='btn col-12' value='update todo' type='submit'></Button> :
+                {todoIndex !== null ?
+                  <Button className='btn col-12 btn--secondary' value='update todo' type='submit'></Button> :
                   <Button className='btn col-12' value='add todo' type='submit'></Button>
                 }
               </form>

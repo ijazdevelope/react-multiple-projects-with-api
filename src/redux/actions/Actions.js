@@ -1,11 +1,4 @@
-import { actionTypes, INCREMENT } from '../constants/Constants'
-
-export const Action = (payload) => {
-    return {
-        type: INCREMENT,
-        payload
-    }
-}
+import { actionTypes } from '../constants/Constants'
 
 export const addTodo = (payload) => {
     return {
@@ -21,10 +14,12 @@ export const deleteTodo = (payload) => {
     }
 }
 
-export const updateTodo = (payload) => {
-    console.log(payload, 'payload in actions...')
+export const updateTodo = (value, index) => {
     return {
         type: actionTypes.EDIT_TODO,
-        payload
+        payload: {
+            ...value,
+            index
+        }
     }
 }
