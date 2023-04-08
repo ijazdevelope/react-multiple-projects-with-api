@@ -11,6 +11,7 @@ import { Axios } from '../../config/Interceptor';
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, deleteTodo, updateTodo } from '../../redux/actions/Actions';
 import TodoNotFoundImg from '../../assets/images/error-404-not-found.png';
+import Loader from '../loader/Loader';
 
 const Todo = () => {
 
@@ -61,7 +62,7 @@ const Todo = () => {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-7 m-auto c-todo__add">
-              <h2 className='c-todo__title'>todo title </h2>
+              <h2 className='c-todo__title'>todo title <Loader /> </h2>
               <form className='c-todo__form' onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group mb-3 c-todo__input-group">
                   <span className="input-group-text" id="basic-addon1">
