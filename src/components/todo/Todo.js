@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../scss/components/todo/todo.css';
 import TodoImg from '../../static/images/to-do-list.png';
@@ -9,14 +9,14 @@ import Input from '../Input';
 import { TodoSchema } from '../../pages/auth/schema-validation/SchemaValidation';
 import { Axios } from '../../config/Interceptor';
 import { useDispatch, useSelector } from 'react-redux'
-import { Action, addTodo, deleteTodo } from '../../redux/actions/Actions';
-import { actionTypes } from '../../redux/constants/Constants';
+import { addTodo, deleteTodo, updateTodo } from '../../redux/actions/Actions';
 import TodoNotFoundImg from '../../assets/images/error-404-not-found.png';
 
 const Todo = () => {
 
   const { list } = useSelector(state => state?.reducer);
   const dispatch = useDispatch();
+  const [todoIndex, setTodoIndex] = useState(null);
 
   console.log(list, 'redux state onload');
 
@@ -25,14 +25,23 @@ const Todo = () => {
   });
 
   const onSubmit = (data) => {
+    if (todoIndex === null) {
     dispatch(addTodo(data));
-    reset({ todo_name: '' });
+  } else {
+      dispatch(updateTodo(data, todoIndex));
+      setTodoIndex(null);
+  }
+  reset({ todo_name: '' });
   };
 
   const deleteHandler = (index) => {
     const delTodo = list?.filter((todo, ind) => ind !== index);
-    console.log(delTodo, 'deleted todo in Todo.js');
     dispatch(deleteTodo(delTodo));
+  }
+
+  const editTodo = (value, index) => {
+    setTodoIndex(index);
+    setValue('todo_name', value);
   }
 
   return (
@@ -70,7 +79,10 @@ const Todo = () => {
                   />
                 </div>
                 <p className='c-wrapper__form__error'>{errors.todo_name?.message}</p>
-                <Button className='btn col-12' value='add todo' type='submit'></Button>
+                {todoIndex !== null ?
+                  <Button className='btn col-12 btn--secondary' value='update todo' type='submit'></Button> :
+                  <Button className='btn col-12' value='add todo' type='submit'></Button>
+                }
               </form>
               <div className='row my-3 justify-content-center'>
                 <Button className='btn col-3 btn--success' value='all' type='button'></Button>
@@ -98,7 +110,7 @@ const Todo = () => {
                     <span className='c-todo__name'> {data?.todo_name} </span>
                     <div className='d-flex align-items-center'>
                       <input type='checkbox' />
-                      <span className='fa fa-pencil mx-3 text-success'></span>
+                      <span onClick={() => editTodo(data?.todo_name, index)} className='fa fa-pencil mx-3 text-success'></span>
                       <span onClick={() => deleteHandler(index)} className='fa fa-trash-o text-danger'></span>
                     </div>
                   </div>

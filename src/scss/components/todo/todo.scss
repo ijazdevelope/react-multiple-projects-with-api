@@ -47,6 +47,7 @@ $ns: c-todo;
     }
 
     &__form {
+        border-radius: rem(5px);
         background-color: $bright-gray;
         padding: rem(16px);
     }
