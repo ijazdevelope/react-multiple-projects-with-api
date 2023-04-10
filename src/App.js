@@ -8,6 +8,8 @@ import ResetPassword from './pages/auth/reset-password/ResetPassword';
 import Todo from './components/todo/Todo';
 import Modal from './components/modal/Modal';
 import { useState } from 'react';
+import ProductListing from './components/ecommerce/ProductListing';
+import ProductDetail from './components/ecommerce/ProductDetail';
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/products" element={<ProductListing />} />
+        <Route path='/product/:productId' exact Component={ProductDetail} />
       </Routes>
     </>
   );

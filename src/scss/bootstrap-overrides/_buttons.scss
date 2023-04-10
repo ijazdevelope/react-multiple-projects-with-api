@@ -37,6 +37,10 @@
                 transition: all $speed-500 ease-in-out;
             }
         }
+
+        &--add-to-cart {
+            background-color: $coral-red;
+        }
     }
 
 }

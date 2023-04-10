@@ -4,6 +4,10 @@ const InitialState = {
     list: JSON.parse(localStorage.getItem('todo')) || [],
 }
 
+const initialState = {
+    products: []
+}
+
 export const Reducers = (state = InitialState, { payload, type }) => {
 
     switch (type) {
@@ -23,7 +27,28 @@ export const Reducers = (state = InitialState, { payload, type }) => {
             localStorage.setItem('todo', JSON.stringify(tempArr));
             return { ...state, list: tempArr }
         };
-
         default: return state;
     }
+}
+
+// reducers for ecommerce project
+export const ProductReducer = (state = initialState, { type, payload }) => {
+
+    switch (type) {
+        case actionTypes.SET_PRODUCT:
+            return { ...state, products: payload }
+        default:
+            return state;
+    };
+}
+
+export const ProductDetailReducer = (state = [], { type, payload }) => {
+    switch (type) {
+        case actionTypes.SELECTED_PRODUCT:
+            return { ...state, state: [payload] }
+        case actionTypes.REMOVE_SELECTED_PRODUCT:
+            return {}
+        default:
+            return state;
+    };
 }
