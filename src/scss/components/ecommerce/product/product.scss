@@ -1,0 +1,66 @@
+@import '../../../variables';
+
+$ns: c-product;
+$product-detail: c-product-detail;
+$skeleton: c-skeleton;
+$pro-details: c-prouduct-detail;
+
+.#{$ns} {
+    &__skeleton {
+        line-height: 0;
+
+        span {
+            border-radius: 0;
+            position: absolute;
+            display: inline-block;
+            width: 100%;
+            top: 0;
+            left: 0;
+            bottom: 85px;
+        }
+    }
+
+    &__img {
+        height: 200px;
+        object-fit: contain;
+    }
+}
+
+.#{$product-detail} {
+    &__img {
+        @media screen and (max-width: 500px) {
+            width: 200px;
+        }
+    }
+}
+
+.#{$skeleton} {
+    line-height: 0;
+
+    span {
+        border-radius: 0;
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 85px;
+    }
+}
+
+.#{$pro-details} {
+    position: relative;
+
+    &__price {
+        color: $coral-red;
+        font-size: 3em;
+    }
+
+    &__backt-link {
+        &::before {
+            content: $arrow-left;
+            font-family: FontAwesome;
+            transform: translateX(-4px);
+        }
+    }
+}
