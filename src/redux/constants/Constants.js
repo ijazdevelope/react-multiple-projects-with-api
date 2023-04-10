@@ -1,5 +1,10 @@
 export const actionTypes = {
     ADD_TODO: 'ADD_TODO',
     DELETE_TODO: 'DELETE_TODO',
-    EDIT_TODO: 'EDIT_TODO'
+    EDIT_TODO: 'EDIT_TODO',
+
+    // constans for ecommerce project
+    SET_PRODUCT: 'SET_PRODUCT',
+    SELECTED_PRODUCT: 'SELECTED_PRODUCT',
+    REMOVE_SELECTED_PRODUCT: 'REMOVE_SELECTED_PRODUCT'
 }
