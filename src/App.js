@@ -10,6 +10,7 @@ import Modal from './components/modal/Modal';
 import { useState } from 'react';
 import ProductListing from './components/ecommerce/ProductListing';
 import ProductDetail from './components/ecommerce/ProductDetail';
+import ListGroup from './components/ListGroup';
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/todo" element={<Todo />} />
         <Route path="/products" element={<ProductListing />} />
         <Route path='/product/:productId' exact Component={ProductDetail} />
+        <Route path='/list-group' Component={ListGroup} />
       </Routes>
     </>
   );
