@@ -7,10 +7,12 @@ import ForgetPassword from './pages/auth/forget-password/ForgetPassword';
 import ResetPassword from './pages/auth/reset-password/ResetPassword';
 import Todo from './components/todo/Todo';
 import Modal from './components/modal/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductListing from './components/ecommerce/ProductListing';
 import ProductDetail from './components/ecommerce/ProductDetail';
 import ListGroup from './components/ListGroup';
+import Todos, { createTodo, initialTodos } from './components/custom-todos/Todos';
+import LiftingStateUp from './components/lifting-state-up/LiftingStateUp';
 
 const App = () => {
 
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/products" element={<ProductListing />} />
         <Route path='/product/:productId' exact Component={ProductDetail} />
         <Route path='/list-group' Component={ListGroup} />
+        <Route path='/custom-todo' Component={Todos} />
+        <Route path='/lifting-state-up' Component={LiftingStateUp} />
       </Routes>
     </>
   );

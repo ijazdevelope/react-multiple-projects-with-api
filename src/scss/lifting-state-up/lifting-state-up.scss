@@ -1,0 +1,19 @@
+$ns: c-state;
+
+.#{$ns} {
+    padding: 1rem;
+
+    &__wrapper {
+        column-gap: 1rem;
+        display: flex;
+
+        &__child {
+            border: 1px solid gray;
+            padding: 0.5rem;
+        }
+
+        &__field {
+            padding: 0.5rem;
+        }
+    }
+}
