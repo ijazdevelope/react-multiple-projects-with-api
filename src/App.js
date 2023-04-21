@@ -17,10 +17,25 @@ import LiftingStateUp from './components/lifting-state-up/LiftingStateUp';
 const App = () => {
 
   const [openModal, setOpenModal] = useState(false);
+  const [mood, setMood] = useState('light');
+
+  const toggleMood = () => {
+    const body = document.body.style;
+    // mood === 'light' ? setMood('dark') : setMood('light') 
+    if (mood === 'light') {
+      setMood('dark');
+      body.backgroundColor = 'rgb(61, 63, 64)';
+      body.color = '#fff'
+    } else {
+      setMood('light');
+      body.backgroundColor = '#fff';
+      body.color = 'rgb(61, 63, 64)'
+    }
+  }
 
   return (
     <>
-      <Navbar />
+      <Navbar mood={mood} toggleMood={toggleMood} />
       <Modal openModal={openModal} closeModal={() => setOpenModal(false)} />
       <Routes>
         <Route path="/" element={<Login />} />
