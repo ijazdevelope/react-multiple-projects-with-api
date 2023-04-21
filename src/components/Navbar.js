@@ -23,7 +23,8 @@ const Navbar = () => {
                             </a>
                             <ul className="dropdown-menu">
                                 <li><Link className="dropdown-item" to="/todo">Todo List</Link></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
+                                <li><Link className="dropdown-item" to='/custom-todo'>Custom Todo</Link></li>
+                                <li><Link className="dropdown-item" to='/lifting-state-up'>Lifting State Up</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>

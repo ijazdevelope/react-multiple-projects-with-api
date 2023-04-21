@@ -1,0 +1,29 @@
+$ns: custom-todo;
+
+$field-border-clr: #ced4da;
+
+.#{$ns} {
+    display: flex;
+
+    .#{$ns} {
+        &__field {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: unset;
+
+            &:focus {
+                box-shadow: unset;
+                // border-color: $field-border-clr;
+            }
+        }
+
+        &__addTodo-btn {
+            border-top-right-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+            border: 1px solid $field-border-clr;
+            padding: 0.375rem 0.75rem;
+            white-space: nowrap;
+        }
+    }
+
+}
