@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import '../../scss/components/ecommerce/product/product.scss';
 import { removeSelectedProduct, selectedProduct } from '../../redux/actions/Actions';
 import Button from '../Button';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
 
@@ -25,10 +27,37 @@ const ProductDetail = () => {
         }
     }, [productId]);
 
+    const notify = () => toast('🦄 Product is Loading...', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+
+    useEffect(() => {
+        notify();
+    }, []);
+
     return (
         <div>
             {protDetail?.state === undefined ? (
-                <p className='text-secondary'>Loading.....</p>
+                // <p className='text-secondary'>Loading.....</p>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             ) : (
                 <>
                     {protDetail?.state?.map(product => {
